@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html ng-app="rps_app">
+<head>
+	<meta charset="utf-8">
+	<title>ROCK - PAPER - SCISSORS APP</title>
+  
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="js/main.js"> </script>
+  <script src="js/algorithm.js"> </script>
+
+  <link href='https://fonts.googleapis.com/css?family=Sigmar+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link href="css/main.css" rel="stylesheet"> 
+
+</head>
+<body ng-controller="controller1">
+
+
+<form id= "main_form">
+	
+	<!--Start Menu Table-->
+	<table>
+	<tr>
+	  <td>
+	       <H1>Rock - Paper -Scissors APP</H1>
+	  </td>
+    </tr> 
+    <tr>
+	  <td>
+	       <br>
+           <br>
+	  </td>
+    </tr> 	
+    <tr>
+	  <td>
+	      <button id="b_start_game" type="button" class="btn btn-lg btn-success " data-toggle="modal" data-target="#myModal">Start Game!!!
+          </button>
+	  </td>
+    </tr> 	
+    </table>
+    <!--Start Menu Table-->
+
+
+	 <table id = "t_game" class = "invisible_tool">	
+	
+    <tr>
+      <td><H1><input type = "text" id="t_player_name_1" class="form-control" placeholder="Insert Player Name # 1"></H2></td>
+	  <td></td>
+      <td><H1><input type = "text" id="t_player_name_2" class="form-control" placeholder="Insert Player Name # 2" onkeydown = "visible_game()" title="Press Enter for Continue!!"></H2></td>
+    </tr>
+    <br><div class = "invisible_tool" ><h1 id="s_type_game">Select Game</h1></div>
+    <tr>
+      <td><H2 id="l_player_1">Player1</H2></td>
+	  <td></td>
+      <td><H2 id="l_player_2">Player2</H2></td>
+    </tr>
+    <br>
+    <tr>
+      <td><select name="" id="s_user_1" class="form-control" title="Select option for play R-P-S App!!!!">
+			<option value=""></option>
+			<option value="R">Rock</option>
+			<option value="P">Paper</option>
+			<option value="S">Scissor</option>
+		</select></td>
+      <td>                        </td>
+      <td><select name="" id="s_user_2" class="form-control" title="Select option for play R-P-S App!!!!">
+			<option value=""></option>
+			<option value="R">Rock</option>
+			<option value="P">Paper</option>
+			<option value="S">Scissor</option>
+		</select></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td width=100 HEIGHT=100></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td width=50 HEIGHT=50></td>
+      <td></td>
+    </tr>
+    <div id =d_play_button class ="invisible_tool">
+       <div class="all">
+            <button id ="b_play" class="btn btn-lg btn-success " ng-clik="addPost()" onclick = "game(s_user_1.value,s_user_2.value)" onmouseOver="Presione para Jugar"> PLAY!! 
+	        </button>
+	   </div>
+	</div>
+    </table>
+
+   <div id= "score_board" class="invisible_tool">
+
+    <table class="white_text_color">
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Wins</td>
+        <td>--</td>
+        <td>Ties</td>
+        <td>--</td>
+        <td>Fails</td>
+      </tr>
+      <tr>
+        <td><h3 id ="score_player1">Player1</h3></td>
+        <td></td>
+        <td id="wins1">0</td>
+        <td></td>
+        <td id="ties1">0</td>
+        <td></td>
+        <td id="fails1">0</td>
+      </tr>
+      <tr>
+        <td><h3 id ="score_player2">Player2</h3></td>
+        <td></td>
+        <td id="wins2">0</td>
+        <td></td>
+        <td id="ties2">0</td>
+        <td></td>
+        <td id="fails2">0</td>
+      </tr>
+  </table>
+  <br>
+  <br>
+  
+  <div id= "exit"><h2><a class = "white_text_color" href="http://www.rpsapprest.tk">Exit Game!</a></h2></div> 
+  </div>
+
+	
+	<div class="container">
+  <!-- Trigger the modal with a button -->
+  <!-- Modal -->
+       <div class="modal fade" id="myModal" role="dialog">
+         <div class="modal-dialog">
+    
+      <!-- Modal content-->
+           <div class="modal-content">
+             <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+               <h2 class="modal-title">Welcome R-P-S APP</h2>
+             </div>
+             <div class="modal-body">
+				<br>
+				<h3>Select your game</h3>
+				<br>
+				<select name="" id="select_game" class="form-control">
+			     <option value=""></option>
+			     <option value="s_player">One Game</option>
+			     <option value="m_player">Multiplayer</option>
+			   </select>
+               <br>
+               <br>
+               <br>
+             </div>
+             <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal" onclick = "visible_text(select_game.value)">Continue</button>
+             </div>
+         </div>
+     <!-- Modal -->
+
+       </div>
+  </div>
+  
+	<ul>
+       <li ng-repeat ="users in users">
+          
+          <h2>{{users.player}}</h2>
+	
+       </li>
+	</ul>
+
+
+	
+	
+
+</form>
+
+
+</body>
+</html>
